@@ -1,0 +1,5 @@
+﻿  Proiect.c
+c:\users\ioana\documents\github\prosinc\proiect\proiect\proiect.c(11): warning C4091: 'typedef ': ignored on left of 'node' when no variable is declared
+c:\users\ioana\documents\github\prosinc\proiect\proiect\proiect.c(146): warning C4101: 'nr': unreferenced local variable
+c:\users\ioana\documents\github\prosinc\proiect\proiect\proiect.c(146): warning C4101: 'x': unreferenced local variable
+  Proiect.vcxproj -> C:\Users\Ioana\Documents\GitHub\ProSinc\Proiect\Debug\Proiect.exe

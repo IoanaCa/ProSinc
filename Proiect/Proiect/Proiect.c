@@ -142,7 +142,6 @@ int main()
 {
 	enum { ies, init, cit, pre, in, pos, niv }opt;
 	struct node* rad = NULL;
-	FILE* f;
 	int nr, x, rnd;
 	do
 	{
@@ -151,16 +150,18 @@ int main()
 		printf("3. Afisare preordine.\n");
 		printf("4. Afisare inordine.\n");
 		printf("5. Afisare postordine.\n");
-		printf("6. Afisare parcurgere pe nivel\n");
-		printf("0. Iesire.\n");
+		printf("6. Afisare parcurgere pe nivel.\n");
+		printf("0. Iesire.\n\n");
 		printf("Optiunea dvs:");
 		scanf("%d", &opt);
+		printf("\n");
 		switch (opt)
 		{
 		case ies:
 			break;
 		case init:
 			rad = initializare(rad);
+			printf("Arborele a fost initializat.\n\n");
 			break;
 		case cit:
 			printf("Introduceti numarul de elemente ale arborelui:");
@@ -175,27 +176,27 @@ int main()
 					nr--;
 				}
 				printf("\n");
-			
+			printf("\n");
 			break;
 		case pre:
-			printf("Arborele parcurs in preordine:");
+			printf("Arborele parcurs in preordine: ");
 			preordine(rad);
-			printf("\n");
+			printf("\n\n");
 			break;
 		case in:
-			printf("Arborele parcurs in inordine:");
+			printf("Arborele parcurs in inordine: ");
 			inordine(rad);
-			printf("\n");
+			printf("\n\n");
 			break;
 		case pos:
-			printf("Arborele parcurs in postordine:");
+			printf("Arborele parcurs in postordine: ");
 			postordine(rad);
-			printf("\n");
+			printf("\n\n");
 			break;
 		case niv:
-			printf("Parcurgerea pe nivel a arborelui:");
+			printf("Parcurgerea pe nivel a arborelui: ");
 			nivel(rad);
-			printf("\n");
+			printf("\n\n");
 			break;
 		default:
 			break;
