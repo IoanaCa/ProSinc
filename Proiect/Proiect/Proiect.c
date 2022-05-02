@@ -147,7 +147,7 @@ int main()
 	do
 	{
 		printf("1. Initializare arbore.\n");
-		printf("2. Citire noduri.\n");
+		printf("2. Generare noduri.\n");
 		printf("3. Afisare preordine.\n");
 		printf("4. Afisare inordine.\n");
 		printf("5. Afisare postordine.\n");
