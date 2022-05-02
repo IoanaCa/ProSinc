@@ -1,8 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
-
-int nivel_max = 0;
+#include <time.h>
 
 typedef struct node
 {
@@ -17,14 +16,21 @@ struct node* initializare(struct node* rad)
 	return rad;
 }
 
-
-
 int maxim(int a, int b)
 {
 	if (a > b)
 		return a;
 	else
 		return b;
+}
+
+int randoms(int lower, int upper)
+{
+	int valoare;
+
+	valoare = (rand() % (upper - lower + 1)) + lower;
+	
+	return valoare;
 }
 
 struct node* Adaugare(struct node* rad, int nod)
@@ -74,19 +80,6 @@ int inaltime(struct node* rad)
 	}
 }
 
-void echilibrat(struct node* rad, int* ok)
-{
-	int x;
-	if (rad != NULL)
-	{
-		echilibrat(rad->left, &(*ok));
-		echilibrat(rad->right, &(*ok));
-		x = inaltime(rad->left) - inaltime(rad->right);
-		if (x >= 1 || x <= -1)
-			(*ok)++;
-	}
-}
-
 void postordine(struct node* rad)
 {
 	if (rad != NULL)
@@ -102,8 +95,8 @@ void preordine(struct node* rad)
 	if (rad != NULL)
 	{
 		printf("%d ", rad->key);
-		postordine(rad->left);
-		postordine(rad->right);
+		preordine(rad->left);
+		preordine(rad->right);
 	}
 }
 
@@ -111,9 +104,9 @@ void inordine(struct node* rad)
 {
 	if (rad != NULL)
 	{
-		postordine(rad->left);
+		inordine(rad->left);
 		printf("%d ", rad->key);
-		postordine(rad->right);
+		inordine(rad->right);
 	}
 }
 
@@ -150,7 +143,7 @@ int main()
 	enum { ies, init, cit, pre, in, pos, niv }opt;
 	struct node* rad = NULL;
 	FILE* f;
-	int nr, x;
+	int nr, x, rnd;
 	do
 	{
 		printf("1. Initializare arbore.\n");
@@ -170,19 +163,19 @@ int main()
 			rad = initializare(rad);
 			break;
 		case cit:
-			if ((f = fopen("intrare1.txt", "r")) == NULL)
-			{
-				printf("Eroare la deschiderea fisierului de intrare\n");
-				exit(EXIT_FAILURE);
-			}
-			else
-			{
-				while (!feof(f))
+			printf("Introduceti numarul de elemente ale arborelui:");
+			scanf("%d", &nr);
+			printf("Numerele generate sunt: ");
+				while (nr!=0)
 				{
-					fscanf(f, "%d", &nr);
-					rad = Adaugare(rad, nr);
+					
+					rnd = randoms(0, 50);
+					printf("%d ", rnd);
+					rad = Adaugare(rad, rnd);
+					nr--;
 				}
-			}
+				printf("\n");
+			
 			break;
 		case pre:
 			printf("Arborele parcurs in preordine:");
