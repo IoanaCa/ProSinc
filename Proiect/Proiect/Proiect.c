@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -80,7 +81,7 @@ void echilibrat(struct node* rad, int* ok)
 	{
 		echilibrat(rad->left, &(*ok));
 		echilibrat(rad->right, &(*ok));
-		x = inalt(rad->left) - inalt(rad->right);
+		x = inaltime(rad->left) - inaltime(rad->right);
 		if (x >= 1 || x <= -1)
 			(*ok)++;
 	}
@@ -116,25 +117,30 @@ void inordine(struct node* rad)
 	}
 }
 
-void nivel(struct node *rad)
-{
-	int i = inaltime(rad);
-	for (int j = 1; j <= i; j++)
-		parcurgere_nivel(rad, j);
-}
 
 void parcurgere_nivel(struct node* rad, int x)
 {
-	if (rad == NULL)
-		return;
-	if (x == 1)
-		printf("%d ", rad->key);
-	else
-		if (x > 1)
-		{
-			parcurgere_nivel(rad->left, x - 1);
-			parcurgere_nivel(rad->right, x - 1);
-		}
+	if (rad  != NULL)
+	{
+		if (x == 1)
+			printf("%d ", rad->key);
+		else
+			if (x > 1)
+			{
+				parcurgere_nivel(rad->left, x - 1);
+				parcurgere_nivel(rad->right, x - 1);
+			}
+	}
+}
+
+void nivel(struct node* rad)
+{
+	int i = inaltime(rad);
+	for (int j = 1; j <= i; j++)
+	{
+		printf("\n");
+		parcurgere_nivel(rad, j);
+	}
 }
 
 
@@ -155,7 +161,7 @@ int main()
 		printf("6. Afisare parcurgere pe nivel\n");
 		printf("0. Iesire.\n");
 		printf("Optiunea dvs:");
-		scanf("%d",&opt);
+		scanf("%d", &opt);
 		switch (opt)
 		{
 		case ies:
